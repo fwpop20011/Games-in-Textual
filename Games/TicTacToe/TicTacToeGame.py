@@ -1,5 +1,3 @@
-from wsgiref.util import request_uri
-
 X = 1
 O = -1
 
@@ -48,7 +46,7 @@ class Game:
                 return X
             if row_sum == O*3:
                 self.game_over = True
-                return -O
+                return O
 
         # check columns
         for j in range(3):
@@ -70,11 +68,11 @@ class Game:
         if diag_sum == 3:
             self.game_over = True
             self.winner = X
-            return 100
+            return X
         if diag_sum == -3:
             self.game_over = True
             self.winner = O
-            return -100
+            return O
 
         # check diagonal right to left
         diag_sum = 0
@@ -83,11 +81,11 @@ class Game:
         if diag_sum == 3:
             self.game_over = True
             self.winner = X
-            return 100
+            return X
         if diag_sum == -3:
             self.game_over = True
             self.winner = O
-            return -100
+            return O
 
         return 0
 
